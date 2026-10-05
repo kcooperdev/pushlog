@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pushlog demo page</title>
+    <style>
+      :root { color-scheme: dark; }
+      body {
+        margin: 0;
+        font-family: "Segoe UI", system-ui, sans-serif;
+        background: #10141b;
+        color: #e6ebf2;
+      }
+      main { max-width: 640px; margin: 48px auto; padding: 0 20px; }
+      button {
+        margin: 0 8px 8px 0;
+        border: 1px solid #313a49;
+        background: #171d27;
+        color: inherit;
+        border-radius: 8px;
+        padding: 8px 12px;
+        cursor: pointer;
+      }
+      pre {
+        background: #090b10;
+        border-radius: 8px;
+        padding: 12px;
+        overflow: auto;
+      }
+    </style>
+    <script>
+      window.adobeDataLayer = window.adobeDataLayer || []
+      window.adobeDataLayer.push({
+        event: 'pageLoad',
+        page: { name: 'vehicle-search', siteSection: 'shopping' },
+      })
+    </script>
+  </head>
+  <body>
+    <main>
+      <h1>Pushlog demo page</h1>
+      <p>Open this page over http, then open the Pushlog popup. The buttons push Adobe Data Layer events.</p>
+      <button id="impression" type="button">Push recommendedCarImpression</button>
+      <button id="click" type="button">Push vehicleClick</button>
+      <button id="boot" type="button">Simulate ACDL init</button>
+      <pre id="log">adobeDataLayer is ready.</pre>
+    </main>
+    <script>
+      const log = document.getElementById('log')
+      const write = (message) => {
+        log.textContent = message
+      }
+
+      document.getElementById('impression').addEventListener('click', () => {
+        adobeDataLayer.push({
+          event: 'recommendedCarImpression',
+          vehicleId: '99812',
+          price: '28990',
+          position: 1,
+        })
+        write('Pushed recommendedCarImpression')
+      })
+
+      document.getElementById('click').addEventListener('click', () => {
+        adobeDataLayer.push({
+          event: 'vehicleClick',
+          vehicleId: '12345',
+          price: '22998',
+        })
+        write('Pushed vehicleClick')
+      })
+
+      document.getElementById('boot').addEventListener('click', () => {
+        const queued = adobeDataLayer.splice(0, adobeDataLayer.length)
+        adobeDataLayer.push = function (...args) {
+          const kept = args.filter((arg) => typeof arg !== 'function')
+          return Array.prototype.push.apply(this, kept)
+        }
+        adobeDataLayer.getState = () => ({ demo: true })
+        queued.forEach((item) => adobeDataLayer.push(item))
+        write('Replaced push the way Adobe Client Data Layer does, then replayed the queue.')
+      })
+    </script>
+  </body>
+</html>
