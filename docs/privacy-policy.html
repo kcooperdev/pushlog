@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pushlog Privacy Policy</title>
+    <meta
+      name="description"
+      content="Privacy policy for the Pushlog browser extension. Analytics events are processed locally and are not sent to the developer."
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --text: #1a1d21;
+        --muted: #5c6570;
+        --line: #e4e7eb;
+        --bg: #f7f8fa;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font: 17px/1.6 Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+      }
+      main {
+        max-width: 40rem;
+        margin: 0 auto;
+        padding: 3.5rem 1.5rem 4rem;
+      }
+      h1 {
+        margin: 0 0 0.35rem;
+        font-size: 2rem;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+      }
+      .effective {
+        margin: 0 0 1.5rem;
+        color: var(--muted);
+        font-family: ui-sans-serif, system-ui, sans-serif;
+        font-size: 0.9rem;
+      }
+      h2 {
+        margin: 2rem 0 0.4rem;
+        font-size: 1.15rem;
+      }
+      p, li { margin: 0.4rem 0; }
+      ul { padding-left: 1.2rem; }
+      a { color: inherit; }
+      .contact {
+        margin-top: 0.6rem;
+        font-family: ui-sans-serif, system-ui, sans-serif;
+        font-size: 0.95rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Pushlog Privacy Policy</h1>
+      <p class="effective">Effective date: October 7, 2026</p>
+
+      <p>
+        Pushlog is a browser extension designed to help developers inspect and debug analytics implementations.
+      </p>
+
+      <h2>Information collection</h2>
+      <p>
+        Pushlog does not collect, store, transmit, sell, or share personal information with the extension developer or any third party.
+      </p>
+
+      <h2>Data processing</h2>
+      <p>
+        Pushlog processes analytics events locally within your browser so it can show them for debugging. It reads:
+      </p>
+      <ul>
+        <li>Adobe Client Data Layer calls (<code>adobeDataLayer.push</code>)</li>
+        <li>Adobe Experience Platform Web SDK calls (<code>alloy("sendEvent")</code>)</li>
+        <li>Google Tag Manager calls (<code>dataLayer.push</code> and <code>gtag</code>)</li>
+      </ul>
+      <p>
+        It also keeps the URL of the tab you are inspecting so the timeline stays attached to that page. The extension runs on HTTP and HTTPS pages in order to see those calls. It does not read form fields, passwords, or cookies, and it does not send page contents anywhere.
+      </p>
+
+      <h2>Data storage</h2>
+      <p>
+        Captured event data, including the tab URL and event payloads, is stored locally on your device with Chrome extension storage. Closing a tab clears that tab’s timeline. This data is not transmitted to external servers operated by Pushlog.
+      </p>
+
+      <h2>Third-party services</h2>
+      <p>
+        Pushlog does not use third-party analytics, advertising networks, or remote code execution services.
+      </p>
+
+      <h2>Data sharing</h2>
+      <p>
+        Pushlog does not sell, transfer, or disclose user data to third parties.
+      </p>
+
+      <h2>Changes to this policy</h2>
+      <p>
+        This policy may be updated periodically. Any updates will be reflected on this page.
+      </p>
+
+      <h2>Contact</h2>
+      <p>For questions regarding this privacy policy, contact:</p>
+      <p class="contact">
+        Khalif Cooper<br />
+        Email: <a href="mailto:khalifcooper24@gmail.com">khalifcooper24@gmail.com</a>
+      </p>
+    </main>
+  </body>
+</html>
